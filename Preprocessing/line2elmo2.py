@@ -7,7 +7,8 @@ title as the first sentence, then splits the article sentences. The domains are 
 '''
 
 import argparse
-from allennlp.commands.elmo import ElmoEmbedder
+# from allennlp.commands.elmo import ElmoEmbedder
+from allennlp.modules.token_embedders import ElmoTokenEmbedder
 import os
 import json
 import math
@@ -60,7 +61,8 @@ if __name__ == '__main__':
         device = 0
     else:
         device = -1
-    elmo = ElmoEmbedder(options_file=config, weight_file=model, cuda_device=device)
+    # elmo = ElmoEmbedder(options_file=config, weight_file=model, cuda_device=device)
+    elmo = ElmoTokenEmbedder(options_file=config, weight_file=model)
 
 
     print("Processing lines...")
